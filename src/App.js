@@ -1,19 +1,13 @@
 import React from 'react';
 import { NavBar } from './components/NavBar/NavBar';
-import { Container, Row, Col } from 'react-bootstrap';
-import underConstructions from './underConstructions.svg';
+import { ItemListContainer } from './components/ItemListContainer/ItemListContainer';
 
 function App() {
   return (
     <div className="App">
       <NavBar />
-      <Container>
-        <Row>
-          <Col><img alt="" src={underConstructions} /> </Col>
-        </Row>
-        <p className='text-center'>Sitio en construccion... naturalmente</p>
-      </Container>
-    </div>
+      <ItemListContainer greeting={'Hola visitante, todavia no hay nada que ver por aca.'} />
+    </div >
   );
 }
 
