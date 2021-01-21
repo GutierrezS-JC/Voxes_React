@@ -6,9 +6,7 @@ export const ItemCount = ({ sub, add, onAdd, count }) => {
 
     return (
         <>
-            <div className="pt-1 pb-3 itemStyle mt-3" >
-                <p className="mt-3 text-center">Un Item</p>
-                <hr className="xs-6" />
+            <div className="pt-1 pb-3 mt-3 p-4" >
                 <Row className="align-items-center justify-content-center">
                     <Button variant="outline-danger" onClick={sub}>-</Button>
                     <p className="px-4">{count}</p>

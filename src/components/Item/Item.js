@@ -12,9 +12,9 @@ export const Item = ({ item }) => {
                     <Card.Text>
                         {item.category}
                         <br />
-                            ${item.price}
+                        ${item.price}
                     </Card.Text>
-                    <a href="#">Ver mas</a>
+                    <a href="/">Ver mas</a>
                 </Card.Body>
             </Card>
         </React.Fragment >

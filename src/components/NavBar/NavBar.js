@@ -5,7 +5,7 @@ import { CartWidget } from '../CartWidget/CartWidget';
 
 export const NavBar = () => {
     return (
-        < Navbar collapseOnSelect expand='md' bg="dark" variant="dark">
+        < Navbar collapseOnSelect expand='md' className="dark-theme" variant="dark">
             <Navbar.Brand href="#home">
                 <Logo />
                 {' '}
