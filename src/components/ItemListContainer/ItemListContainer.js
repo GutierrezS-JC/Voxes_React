@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Container } from 'react-bootstrap';
 import { SpinnerLoading } from '../Spinner/Spinner';
 import { ItemList } from '../ItemList/ItemList';
+
 import Strato1 from '../../img/Strato_1.jpg';
 import Strato2 from '../../img/Strato_2.jpg';
 import Strato_Japan from '../../img/Strato_Japan.jpg';
@@ -16,7 +18,7 @@ import Amp_2 from '../../img/Amp_2.jpg';
 const items = [
     {
         id: 1,
-        category: 'Guitar',
+        category: 'guitar',
         title: "Fender Stratocaster '60 Vibe",
         description: 'A guitar',
         price: "120.000",
@@ -24,7 +26,7 @@ const items = [
     },
     {
         id: 2,
-        category: 'Amp',
+        category: 'amp',
         title: 'Marshall DSL40',
         description: "An amp",
         price: "119.980",
@@ -32,7 +34,7 @@ const items = [
     },
     {
         id: 3,
-        category: 'Guitar',
+        category: 'guitar',
         title: 'Fender Stratocaster - American Special',
         description: 'A guitar',
         price: "309.090",
@@ -40,7 +42,7 @@ const items = [
     },
     {
         id: 4,
-        category: 'Guitar',
+        category: 'guitar',
         title: 'Fender Stratocaster - American Standard',
         description: 'A guitar',
         price: "242.694",
@@ -48,7 +50,7 @@ const items = [
     },
     {
         id: 5,
-        category: 'Guitar',
+        category: 'guitar',
         title: 'Gibson Les Paul',
         description: 'A guitar',
         price: "615.091",
@@ -56,7 +58,7 @@ const items = [
     },
     {
         id: 6,
-        category: 'Pedal',
+        category: 'pedal',
         title: 'MXR Custom Badass Distortion M78',
         description: 'A pedal',
         price: "11.539",
@@ -64,7 +66,7 @@ const items = [
     },
     {
         id: 7,
-        category: 'Pedal',
+        category: 'pedal',
         title: 'Hotone Wally Looper',
         description: 'A pedal',
         price: "5.668",
@@ -72,7 +74,7 @@ const items = [
     },
     {
         id: 8,
-        category: 'Pedal',
+        category: 'pedal',
         title: 'Boss Bd-2',
         description: 'A pedal',
         price: "15.728",
@@ -80,7 +82,7 @@ const items = [
     },
     {
         id: 9,
-        category: 'Pedal',
+        category: 'pedal',
         title: 'Jim Dunlop - Wah Wah Cry Baby',
         description: 'What a pedal',
         price: "14.684",
@@ -88,7 +90,7 @@ const items = [
     },
     {
         id: 10,
-        category: 'Amp',
+        category: 'amp',
         title: 'Vox Valvetronix VT20+ Classic',
         description: 'An amp',
         price: "28.435",
@@ -97,7 +99,7 @@ const items = [
 
 ]
 
-export const ItemListContainer = ({ greeting }) => {
+export const ItemListContainer = () => {
     const [products, setProducts] = useState([]);
     const [spinner, setSpinner] = useState(true);
 
@@ -118,26 +120,15 @@ export const ItemListContainer = ({ greeting }) => {
 
     return (
         <>
-            {/*<Row className="align-items-center justify-content-center">
-                <Col xl={3} md={4} sm={6} xs={8}>
-                    <CountContainer initial={1} stock={10} />
-                </Col>
-                <Col xl={3} md={4} sm={6} xs={8}>
-                    <CountContainer initial={1} stock={10} />
-                </Col>
-                <Col xl={3} md={4} sm={6} xs={8}>
-                    <CountContainer initial={1} stock={10} />
-                </Col>
-                <Col xl={3} md={4} sm={6} xs={8}>
-                    <CountContainer initial={1} stock={10} />
-                </Col>
-    </Row>*/}
-            {spinner ? <SpinnerLoading />
-                :
-                <React.Fragment>
-                    < ItemList items={products} /> <p className='text-center mt-5'>{greeting}</p>
-                </React.Fragment>
-            }
+            <Container className="mt-4">
+                {spinner ? <SpinnerLoading />
+                    :
+                    <React.Fragment>
+                        < ItemList items={products} /> <br />
+                    </React.Fragment>
+                }
+
+            </Container>
         </>
     )
 }

@@ -4,7 +4,6 @@ import { HiShoppingCart } from 'react-icons/hi';
 
 export const CartWidget = () => {
     return (
-        <Button variant="outline-light"><HiShoppingCart /></Button>
-
+        <Button variant="outline-light" className="mb-md-0 mb-2 ml-md-2 "><HiShoppingCart /></Button>
     )
 }

@@ -1,6 +1,9 @@
 .dark-theme {
   background-color: #1f1f1f;
 }
+.darkBanner {
+  background-color: #0f0f0f;
+}
 .footer {
   position: absolute;
   bottom: 0;
@@ -14,4 +17,28 @@
 
 .itemDetail {
   margin-bottom: 150px;
+}
+.imgJumbo {
+  background-image: url("./img/Banner_2.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 50vh;
+}
+.overlay {
+  position: absolute;
+  min-height: 100%;
+  min-width: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.459);
+}
+
+.description {
+  left: 50%;
+  position: absolute;
+  top: 45%;
+  transform: translate(-50%, -55%);
+  color: rgba(255, 255, 255, 0.925);
+  line-height: 1.5;
 }
