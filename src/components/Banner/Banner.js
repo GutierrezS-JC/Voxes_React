@@ -3,11 +3,10 @@ import { Jumbotron, Container, Form, FormControl, Button } from 'react-bootstrap
 
 export const Banner = () => {
     return (
-        <Jumbotron fluid className="imgJumbo">
+        <Jumbotron id="bannerBuscador" fluid className="imgJumbo">
             <div className="overlay" />
             <Container className="description">
                 <h1>Voxes</h1>
-                <p></p>
                 <p>
                     Powered by music
                   </p>

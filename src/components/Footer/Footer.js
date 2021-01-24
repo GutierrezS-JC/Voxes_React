@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Container, Col } from 'react-bootstrap';
 import Tabs2 from '../../img/Tabs_2.png'
+import { Link } from 'react-router-dom';
 export const Footer = () => {
     return (
         <footer className="dark-theme text-white text-center text-lg-start mt-5">
@@ -20,10 +21,10 @@ export const Footer = () => {
                         <h5 className="text-uppercase font-weight-lighter">Explora</h5>
                         <ul className="list-unstyled font-weight-lighter">
                             <li>
-                                <a href="/" className="text-white">Inicio</a>
+                                <Link to="/" className="text-white">Inicio</Link>
                             </li>
                             <li>
-                                <a href="/" className="text-white">Buscador</a>
+                                <a href="#bannerBuscador" className="text-white">Buscador</a>
                             </li>
                         </ul>
                     </Col>
@@ -32,16 +33,16 @@ export const Footer = () => {
                         <h5 className="text-uppercase font-weight-lighter">Seguinos</h5>
                         <ul className="list-unstyled font-weight-lighter">
                             <li>
-                                <a href="/" className="text-white">Facebook</a>
+                                <a href="https://facebook.com" className="text-white">Facebook</a>
                             </li>
                             <li>
-                                <a href="/" className="text-white">Instagram</a>
+                                <a href="https://instagram.com" className="text-white">Instagram</a>
                             </li>
                             <li>
-                                <a href="/" className="text-white">Twitter</a>
+                                <a href="https://twitter.com" className="text-white">Twitter</a>
                             </li>
                             <li>
-                                <a href="/" className="text-white">Youtube</a>
+                                <a href="https://youtu.be/mbbvYkiuug0?t=5" className="text-white">Youtube</a>
                             </li>
                         </ul>
                     </Col>
@@ -51,10 +52,10 @@ export const Footer = () => {
 
                         <ul className="list-unstyled font-weight-lighter">
                             <li>
-                                <a href="/" className="text-white">Ingresar</a>
+                                <Link to="/" className="text-white">Ingresar</Link>
                             </li>
                             <li>
-                                <a href="/" className="text-white">Vender</a>
+                                <Link to="/" className="text-white">Vender</Link>
                             </li>
                         </ul>
                     </Col>
@@ -63,10 +64,10 @@ export const Footer = () => {
                         <h5 className="text-uppercase font-weight-lighter">Legal</h5>
                         <ul className="list-unstyled font-weight-lighter">
                             <li>
-                                <a href="/" className="text-white">Terminos</a>
+                                <Link to="/" className="text-white">Terminos</Link>
                             </li>
                             <li>
-                                <a href="/" className="text-white">Privacidad</a>
+                                <Link to="/" className="text-white">Privacidad</Link>
                             </li>
                         </ul>
                     </Col>
@@ -75,7 +76,7 @@ export const Footer = () => {
 
             <div className="text-center p-3 font-weight-lighter" style={{ backgroundColor: "#00000080" }}>
                 © 2021 Copyright:{' '}
-                <a className="text-white" href="/">Voxes.com</a>
+                <Link to="/" className="text-white" >Voxes.com</Link>
             </div>
         </footer >
     )

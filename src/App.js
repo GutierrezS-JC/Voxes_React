@@ -5,8 +5,10 @@ import { Footer } from './components/Footer/Footer';
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
 import { Banner } from './components/Banner/Banner';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { NoCoincidence } from './components/NoCoincidence/NoCoincidence';
 
 import './App.css';
+
 
 function App() {
   return (
@@ -23,6 +25,9 @@ function App() {
           </Route>
           <Route path="/item/:id">
             <ItemDetailContainer />
+          </Route>
+          <Route >
+            <NoCoincidence />
           </Route>
         </Switch>
         <Footer className="fixed-bottom" />
