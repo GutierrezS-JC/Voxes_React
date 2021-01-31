@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ItemCount } from '../components/ItemCount/ItemCount';
 
-export const CountContainer = ({ initial, stock }) => {
+export const CountContainer = ({ initial, stock, onAdd }) => {
     const [count, setCount] = useState(initial);
 
     const add = () => {
@@ -13,12 +13,10 @@ export const CountContainer = ({ initial, stock }) => {
         count > 0 && setCount(count - 1);
     }
 
-    const onAdd = () => {
-
-        count <= stock ? alert(`Agregaste ${count} al carrito`) : alert(`La cantidad ingresada es mayor a nuestro stock disponible`);
-    };
-
+    const addToCart = () => {
+        count >= 1 && count <= stock ? onAdd(count) : alert(`La cantidad ingresada es mayor a nuestro stock disponible`);
+    }
     return (
-        <ItemCount sub={sub} add={add} onAdd={onAdd} count={count} />
+        <ItemCount sub={sub} add={add} onAdd={addToCart} count={count} stock={stock} />
     )
 }

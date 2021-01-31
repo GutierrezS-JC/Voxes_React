@@ -1,8 +1,20 @@
-import React from 'react';
-import { Row, Col, Badge } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Row, Col, Badge, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 import { CountContainer } from '../../containers/CountContainer';
 
 export const ItemDetail = ({ item }) => {
+
+    const [quantity, setQuantity] = useState(0);
+
+    const onAdd = (addedQuantity) => {
+        setQuantity(addedQuantity);
+    }
+
+    const resetCount = () => {
+        setQuantity(0);
+    }
+
     return (
         <Row className="itemDetail">
             <Col className="col-lg-6 col-md-12 col-sm-12 col-12">
@@ -19,7 +31,21 @@ export const ItemDetail = ({ item }) => {
                     <h5>Description</h5>
                     <p>{item.description}</p>
                 </div>
-                <CountContainer initial={1} stock={10} />
+                {quantity === 0 ? <CountContainer initial={1} stock={10} onAdd={onAdd} />
+                    :
+                    <React.Fragment>
+                        <Row className="align-items-center justify-content-center mt-3 mb-3">
+                            <Button variant='dark' as={Link} to={`/cart`}>
+                                Terminar mi compra
+                        </Button>
+                        </Row>
+                        <Row className="align-items-center justify-content-center mb-3">
+                            <Button variant='outline-dark mb-4' onClick={resetCount}>
+                                Flashe y quiero modificar mi compra
+                        </Button>
+                        </Row>
+                    </React.Fragment>
+                }
             </Col>
         </Row >
     )

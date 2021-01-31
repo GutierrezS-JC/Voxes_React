@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Row } from 'react-bootstrap';
 import './ItemCount.css';
 
-export const ItemCount = ({ sub, add, onAdd, count }) => {
+export const ItemCount = ({ sub, add, onAdd, count, stock }) => {
 
     return (
         <>
@@ -14,7 +14,7 @@ export const ItemCount = ({ sub, add, onAdd, count }) => {
                 </Row>
 
                 <Row className="align-items-center justify-content-center mt-3 mb-3">
-                    <Button variant="outline-primary" disabled={count <= 0} onClick={onAdd}> Agregar al carrito </Button>
+                    <Button variant="outline-primary" disabled={count <= 0 || count > stock} onClick={onAdd}> Agregar al carrito </Button>
                 </Row>
             </div>
         </>

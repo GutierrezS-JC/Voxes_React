@@ -4,8 +4,11 @@ import { ItemListContainer } from './components/ItemListContainer/ItemListContai
 import { Footer } from './components/Footer/Footer';
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
 import { Banner } from './components/Banner/Banner';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Cart } from './components/Cart/Cart'
 import { NoCoincidence } from './components/NoCoincidence/NoCoincidence';
+
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
 
 import './App.css';
 
@@ -25,6 +28,9 @@ function App() {
           </Route>
           <Route path="/item/:id">
             <ItemDetailContainer />
+          </Route>
+          <Route path='/cart'>
+            <Cart />
           </Route>
           <Route >
             <NoCoincidence />
