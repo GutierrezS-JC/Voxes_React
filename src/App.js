@@ -6,7 +6,7 @@ import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetail
 import { Banner } from './components/Banner/Banner';
 import { Cart } from './components/Cart/Cart'
 import { NoCoincidence } from './components/NoCoincidence/NoCoincidence';
-
+import { CartProvider } from './context/CartContext';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 
@@ -15,29 +15,32 @@ import './App.css';
 
 function App() {
   return (
+
     <BrowserRouter>
-      <div className="App ">
-        <NavBar />
-        <Switch>
-          <Route exact path="/">
-            <Banner />
-            <ItemListContainer />
-          </Route>
-          <Route path="/category/:categoryId">
-            <ItemListContainer />
-          </Route>
-          <Route path="/item/:id">
-            <ItemDetailContainer />
-          </Route>
-          <Route path='/cart'>
-            <Cart />
-          </Route>
-          <Route >
-            <NoCoincidence />
-          </Route>
-        </Switch>
-        <Footer className="fixed-bottom" />
-      </div >
+      <CartProvider>
+        <div className="App">
+          <NavBar />
+          <Switch>
+            <Route exact path="/">
+              <Banner />
+              <ItemListContainer />
+            </Route>
+            <Route path="/category/:categoryId">
+              <ItemListContainer />
+            </Route>
+            <Route path="/item/:id">
+              <ItemDetailContainer />
+            </Route>
+            <Route path='/cart'>
+              <Cart />
+            </Route>
+            <Route >
+              <NoCoincidence />
+            </Route>
+          </Switch>
+          <Footer className="fixed-bottom" />
+        </div >
+      </CartProvider>
     </BrowserRouter>
   );
 }

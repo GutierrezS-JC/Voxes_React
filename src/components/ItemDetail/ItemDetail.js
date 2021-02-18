@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Row, Col, Badge, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
+import { CartContext } from '../../context/CartContext';
 import { CountContainer } from '../../containers/CountContainer';
 
 export const ItemDetail = ({ item }) => {
 
+    const { addItem } = useContext(CartContext)
     const [quantity, setQuantity] = useState(0);
 
-    const onAdd = (addedQuantity) => {
-        setQuantity(addedQuantity);
+    const onAdd = () => {
+        addItem(
+            {
+                item: item
+            },
+            quantity
+        )
     }
 
     const resetCount = () => {
@@ -31,17 +38,17 @@ export const ItemDetail = ({ item }) => {
                     <h5>Description</h5>
                     <p>{item.description}</p>
                 </div>
-                {quantity === 0 ? <CountContainer initial={1} stock={10} onAdd={onAdd} />
+                {quantity === 0 ? <CountContainer initial={1} stock={10} setQuantity={setQuantity} />
                     :
                     <React.Fragment>
                         <Row className="align-items-center justify-content-center mt-3 mb-3">
-                            <Button variant='dark' as={Link} to={`/cart`}>
-                                Terminar mi compra
+                            <Button variant='dark' onClick={onAdd} as={Link} to={`/cart`}>
+                                Agregar al carrito
                         </Button>
                         </Row>
                         <Row className="align-items-center justify-content-center mb-3">
                             <Button variant='outline-dark mb-4' onClick={resetCount}>
-                                Flashe y quiero modificar mi compra
+                                Quiero modificar mi compra
                         </Button>
                         </Row>
                     </React.Fragment>

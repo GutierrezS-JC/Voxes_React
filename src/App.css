@@ -52,3 +52,11 @@
   color: rgba(255, 255, 255, 0.925);
   line-height: 1.5;
 }
+
+#cartNumber {
+  margin-left: -25px;
+}
+.swal2-confirm,
+.swal2-cancel {
+  margin: 0 6px;
+}
