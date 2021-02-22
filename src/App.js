@@ -3,7 +3,7 @@ import { NavBar } from './components/NavBar/NavBar';
 import { ItemListContainer } from './components/ItemListContainer/ItemListContainer';
 import { Footer } from './components/Footer/Footer';
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
-import { Banner } from './components/Banner/Banner';
+//import { Banner } from './components/Banner/Banner';
 import { Cart } from './components/Cart/Cart'
 import { NoCoincidence } from './components/NoCoincidence/NoCoincidence';
 import { CartProvider } from './context/CartContext';
@@ -22,10 +22,12 @@ function App() {
           <NavBar />
           <Switch>
             <Route exact path="/">
-              <Banner />
               <ItemListContainer />
             </Route>
             <Route path="/category/:categoryId">
+              <ItemListContainer />
+            </Route>
+            <Route path="/search/:searchQ">
               <ItemListContainer />
             </Route>
             <Route path="/item/:id">

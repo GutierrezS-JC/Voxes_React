@@ -8,11 +8,17 @@ export const CountContainer = ({ initial, stock, setQuantity }) => {
     const [count, setCount] = useState(initial);
 
     const add = () => {
-        count >= stock ? MySwal.fire({
+        stock === 0 ? MySwal.fire({
             title: 'Error',
-            text: `Lo sentimos, nuestro stock actual es de ${stock} unidades`,
+            text: `Lo sentimos, actualmente no tenemos stock de este producto`,
             icon: 'error',
-        }) : setCount(count + 1);
+        })
+            :
+            count >= stock ? MySwal.fire({
+                title: 'Error',
+                text: `Lo sentimos, nuestro stock actual es de ${stock} unidades`,
+                icon: 'error',
+            }) : setCount(count + 1);
     }
 
     const sub = () => {

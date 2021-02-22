@@ -21,7 +21,7 @@ export const CartProvider = ({ children }) => {
 
 
     const addItem = (item, quantity) => {
-        if (itemsCart.filter(items => item.item.id == items.item.id).length > 0) {
+        if (itemsCart.filter(items => item.item.id === items.item.id).length > 0) {
             MySwal.fire({
                 title: 'Error',
                 text: `Ya tenes el producto '${item.item.title}' en tu carrito`,

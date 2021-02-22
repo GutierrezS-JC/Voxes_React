@@ -30,7 +30,7 @@ export const NavBar = () => {
                     </NavItem>
                 </Nav>
                 <div className="md-text-center">
-                    <Link to="/" className="ml-md-2" style={{ color: " white" }}> <Button variant="outline-light">Iniciar Sesion</Button></Link>
+                    <Link to="/" className="ml-md-2" style={{ color: " white" }}> <Button variant="outline-light">Datos de Compra</Button></Link>
                 </div>
             </Navbar.Collapse>
         </Navbar >

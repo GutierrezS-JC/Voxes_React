@@ -1,16 +1,23 @@
 import React, { useContext, useState } from 'react'
 import { CartContext } from '../../context/CartContext'
-import { Row, Container, Col, Button, Badge } from 'react-bootstrap';
+import { Row, Container, Col, Button } from 'react-bootstrap';
 import { IoTrashOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
+import { CartForm } from './CartForm'
 import emptyCart from '../../img/emptyCart.svg';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+
+import firebase from 'firebase/app';
+import '@firebase/firestore';
+import { getFirestore } from '../../firebase';
 
 export const Cart = () => {
 
     const { itemsCart, removeItem, clear } = useContext(CartContext)
     const MySwal = withReactContent(Swal)
+    //eslint-disable-next-line
+    const [orderId, setOrderId] = useState();
 
     const getTotalPrice = () => {
         let total = 0;
@@ -24,11 +31,19 @@ export const Cart = () => {
         return total;
     }
 
-    const buyAlert = () => {
+    const buyAlert = (idOrder) => {
         MySwal.fire({
             title: '¡Compra realizada!',
-            text: 'Su compra ha sido registrada con exito',
+            text: `Su codigo de compra es ${idOrder}`,
             icon: 'success',
+        })
+    }
+
+    const errorAlert = (error) => {
+        MySwal.fire({
+            title: 'Error',
+            text: error,
+            icon: 'error',
         })
     }
 
@@ -85,6 +100,50 @@ export const Cart = () => {
         })
     }
 
+    const handleUser = (user) => {
+        //Database
+        const db = getFirestore();
+        const orderCollection = db.collection('orders');
+
+        const order = {
+            buyer: user,
+            items: itemsCart,
+            date: firebase.firestore.Timestamp.fromDate(new Date()),
+            total: getTotalPrice()
+        };
+
+        orderCollection.add(order)
+            .then(({ id }) => {
+                setOrderId(id);
+                //Update
+                const itemsToUpdate = db.collection('items').where(firebase.firestore.FieldPath.documentId(), 'in', itemsCart.map((i) => i.item.id));
+
+                const updateStock = async () => {
+                    const query = await itemsToUpdate.get();
+                    const batch = db.batch();
+
+                    const outOfStock = [];
+                    query.docs.forEach((docSnapshot, idx) => {
+                        if (docSnapshot.data().stock >= itemsCart[idx].quantity) {
+                            batch.update(docSnapshot.ref, { stock: docSnapshot.data().stock - itemsCart[idx].quantity });
+                        } else {
+                            outOfStock.push({ ...docSnapshot.data(), id: docSnapshot.id });
+                        }
+                    })
+
+                    if (outOfStock.length === 0) {
+                        batch.commit();
+                        buyAlert(id);
+                        clear();
+                    }
+                }
+                updateStock()
+            })
+            .catch((error) => {
+                console.log('Ocurrio un error: ', error);
+            })
+    }
+
 
     return (
         <React.Fragment>
@@ -114,7 +173,7 @@ export const Cart = () => {
                                     <div className="d-none d-md-block">
                                         <Row className="mt-4 ">
                                             <Col className="col-md-2 col-12 d-flex" >
-                                                <img style={{ width: "6rem" }} src={element.item.pictureUrl} alt={element.item.title} />
+                                                <img style={{ width: "6rem" }} src={element.item.image} alt={element.item.title} />
                                             </Col>
                                             <Col className="col-md-4 col-12 d-flex" >
                                                 <p className="justify-content-center align-self-center">{element.item.title}</p>
@@ -136,7 +195,7 @@ export const Cart = () => {
                                     <div className="d-block d-md-none">
                                         <Row className="mt-4 text-center">
                                             <Col className="col-12 col-sm-6">
-                                                <img style={{ width: "15rem" }} src={element.item.pictureUrl} alt={element.item.title} />
+                                                <img style={{ width: "15rem" }} src={element.item.image} alt={element.item.title} />
                                             </Col>
                                             <Col className="col-sm-6 mt-3">
                                                 <Col className="col-sm-12">
@@ -179,19 +238,17 @@ export const Cart = () => {
                                     </div>
 
                                     <div className="mt-4">
-                                        <h6 className="d-inline">Total </h6>
-                                        <p className="d-inline p-2">${getTotalPrice()}</p>
+                                        <h4 className="d-inline">Total </h4>
+                                        <h4 className="d-inline p-2">${getTotalPrice()}</h4>
                                     </div>
 
-                                    <Button className="mt-4" variant="dark" onClick={() => buyAlert()}>Confirmar Compra</Button>
-
+                                    <CartForm handleUser={handleUser} errorAlert={errorAlert} />
                                 </Col>
                                 <Col className="col-sm-4 col-12 mt-5 mt-sm-0">
                                     <Link to="/"><Button variant="secondary">Seguir Comprando</Button> </Link>
                                     <br />
                                     <Button className="mt-2" variant="danger" onClick={() => deleteAllAlert()}>Vaciar Carrito <IoTrashOutline /></Button>
                                 </Col>
-
                             </Row>
                         </>
                     )
