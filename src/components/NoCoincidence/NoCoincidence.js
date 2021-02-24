@@ -8,12 +8,12 @@ export const NoCoincidence = () => {
     return (
         <Container className="mt-5">
             <Row>
-                <Col className="col-6">
+                <Col className="col-12 col-md-6 ">
                     <h1 className="noMatch">Tan... vacio</h1>
-                    <p className="noMatchP">"Cuando miras largo tiempo a un abismo, el abismo tambien mira dentro de ti."</p>
+                    <p className="noMatchP">Cuando miras demasiado tiempo a un abismo, el abismo tambien mira dentro de ti.</p>
                     <Link to="/"><Button variant="dark">Volver</Button> </Link>
                 </Col>
-                <Col className="col-6">
+                <Col className="col-12 col-md-6">
                     <img alt="notFound" className="img-fluid-max" style={{ maxWidth: "100%", height: "auto" }} src={Void} />
                 </Col>
             </Row>

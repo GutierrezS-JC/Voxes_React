@@ -38,9 +38,9 @@ export const ItemDetail = ({ item }) => {
                     <h5>Description</h5>
                     <p>{item.description}</p>
                 </div>
-                {item.stock === 0 ? <><h5><b>Sin stock</b></h5> <CountContainer initial={0} stock={item.stock} setQuantity={setQuantity} /></>
+                {item.stock === 0 ? <><h5><b>Sin stock</b></h5> <CountContainer initial={0} stock={item.stock} setQuantity={setQuantity} /> </>
                     :
-                    quantity === 0 ? <CountContainer initial={1} stock={item.stock} setQuantity={setQuantity} />
+                    quantity === 0 ? <><h5><b>Stock: {item.stock}</b></h5> <CountContainer initial={1} stock={item.stock} setQuantity={setQuantity} /> </>
                         :
                         <React.Fragment>
                             <Row className="align-items-center justify-content-center mt-3 mb-3">

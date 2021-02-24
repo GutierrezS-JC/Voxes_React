@@ -11,7 +11,7 @@ export const Footer = () => {
                         <h5 className="text-uppercase font-weight-lighter">De un musico a otro...</h5>
                         <a href="https://youtu.be/KDMvN45sjo4" style={{ color: "inherit", textDecoration: "none" }}>
                             <blockquote className="blockquote text-center">
-                                <img src={Tabs2} width="100%" alt="tabs" />
+                                <img alt="tabFooter" src={Tabs2} className="img-fluid-max" style={{ maxWidth: "100%", height: "auto" }} />
                                 <footer className="blockquote-footer font-weight-lighter ">That guy from <cite title="Source Title">Audioslave</cite></footer>
                             </blockquote>
                         </a>

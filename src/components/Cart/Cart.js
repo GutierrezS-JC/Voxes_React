@@ -253,14 +253,15 @@ export const Cart = () => {
                         </>
                     )
                     : <Row>
-                        <Col className="col-6">
+                        <Col className="col-md-6 col-12">
                             <h1 className="noMatch">Carrito... vacio</h1>
                             <p className="noMatchP">Tan vacio que puedo escuchar mis pensamientos</p>
                             <Link to="/"><Button variant="dark">Seguir Comprando</Button> </Link>
                         </Col>
-                        <Col className="col-6">
+                        <Col className="col-md-6 col-12">
                             <img alt="notFound" className="img-fluid-max" style={{ maxWidth: "100%", height: "auto" }} src={emptyCart} />
                         </Col>
+
                     </Row>}
 
             </Container>

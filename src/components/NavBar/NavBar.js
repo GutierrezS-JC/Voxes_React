@@ -1,7 +1,8 @@
 import React from 'react';
-import { Nav, Navbar, NavItem, Button } from 'react-bootstrap';
+import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import { Logo } from '../VoxesLogo/Logo';
 import { CartWidget } from '../CartWidget/CartWidget';
+import { FindOrderWidget } from '../FindOrderWidget/FindOrderWidget';
 import { NavLink, Link } from 'react-router-dom';
 
 export const NavBar = () => {
@@ -29,9 +30,7 @@ export const NavBar = () => {
                         <CartWidget />
                     </NavItem>
                 </Nav>
-                <div className="md-text-center">
-                    <Link to="/" className="ml-md-2" style={{ color: " white" }}> <Button variant="outline-light">Datos de Compra</Button></Link>
-                </div>
+                <FindOrderWidget />
             </Navbar.Collapse>
         </Navbar >
     )
