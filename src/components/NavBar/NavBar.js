@@ -1,6 +1,6 @@
 import React from 'react';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
-import { Logo } from '../VoxesLogo/Logo';
+import { Logo } from '../Logo/Logo';
 import { CartWidget } from '../CartWidget/CartWidget';
 import { FindOrderWidget } from '../FindOrderWidget/FindOrderWidget';
 import { NavLink, Link } from 'react-router-dom';

@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Row, Col, Badge, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import { CartContext } from '../../context/CartContext';
-import { CountContainer } from '../../containers/CountContainer';
+import { CountContainer } from '../../containers/CounContainer/CountContainer';
 
 export const ItemDetail = ({ item }) => {
 
@@ -35,7 +35,7 @@ export const ItemDetail = ({ item }) => {
 
                 <h3><Badge variant="secondary">${item.price}</Badge></h3>
                 <div className="mt-4">
-                    <h5>Description</h5>
+                    <h5>Descripcion</h5>
                     <p>{item.description}</p>
                 </div>
                 {item.stock === 0 ? <><h5><b>Sin stock</b></h5> <CountContainer initial={0} stock={item.stock} setQuantity={setQuantity} /> </>

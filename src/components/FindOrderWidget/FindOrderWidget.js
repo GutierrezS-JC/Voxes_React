@@ -59,28 +59,6 @@ export const FindOrderWidget = () => {
             })
         }
     }
-    /*const searchAlert = () => {
-        MySwal.fire({
-            title: 'Datos de compra',
-            input: 'text',
-            text: 'Para ver los detalles de su compra ingrese el ID que le fue otorgado en el checkout',
-            icon: 'question',
-            confirmButtonText: 'Buscar',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                const db = getFirestore();
-                const orderCollection = db.collection('orders');
-                const order = orderCollection.doc(idCompra);
-                order.get().then((doc) => {
-                    if (!doc.exists) {
-                        MySwal.fire({
-                            title: 'Error',
-                        })
-                    }
-                })
-            }
-        })
-    }*/
 
     return (
         <div className="md-text-center">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Row } from 'react-bootstrap';
-import './ItemCount.css';
+
 
 export const ItemCount = ({ sub, add, addToCart, count, stock }) => {
 
